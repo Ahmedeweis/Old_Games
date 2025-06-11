@@ -10,7 +10,7 @@
   <!-- الأزرار -->
   <div class="space-x-4 flex justify-center">
     <a href="#games"  class="bg-cyan-400 text-black px-6 py-2 rounded-lg hover:bg-cyan-500 transition cursor-pointer">
-      ابدأ اللعب الآن
+      ابدأ اللعب دلوقتي
     </a>
     <a href="https://t.me/BaR0dy" target="_blank" class="bg-gray-800 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition cursor-pointer">  انضم علي قناه تيلجرام</a>
   </div>
