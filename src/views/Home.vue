@@ -4,7 +4,7 @@
     <div class="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black opacity-90"></div>
     <!-- النص الرئيسي -->
 <div class="relative z-10 text-center">
-<h1 class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 mb-4 leading-tight">
+<h1 class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r mt-10 from-cyan-400 to-blue-600 mb-4 leading-tight">
    حمل أجمل الألعاب القديمة <br> ! والمجانية والآمنة
 </h1>
   <!-- الأزرار -->
@@ -70,9 +70,111 @@
       <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full"></div>
     </div>
   </div>
+  <!-- ------------------------------------ -->
+<div id="games" class="min-h-screen  bg-black text-white flex flex-col items-center justify-between relative overflow-hidden">
+    <div class="max-w-7xl  w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-end py-3 gap-4">
+        <!-- <img src="../assets/imgs/panners/pager3.png" class="w-[600px] h-[150px] object-cover rounded-lg shadow-lg" alt="Pager Image"> -->
+        <div class="flex flex-col self-end">
+            <!-- <h2 class="md:text-[80px] text-6xl text-end font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 mb-4 leading-tight">الألعاب</h2> -->
+            <h3 class="md:text-[40px] text-6xl mt-0 font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 mb-4 leading-tight"> اختار اللعبة المناسبة ليك    </h3>
+            <div class="flex justify-end">
+                <span class="w-[150px] h-[3px] bg-gradient-to-r from-cyan-400 to-blue-600"></span>
+            </div>
+        </div>
+        <Search  />
+        <div class="flex justify-center mb-6 flex-wrap gap-1 mt-[10px]">
+<button v-for="(categor, index) in Category" :ref="el => categoryRefs[index] = el" class="bg-[--card] text-cyan-400 text-[16px] px-4 py-2 cursor-pointer rounded"
+                @click="handleCategoryClick(categor, index)" :class="{ 'active': activeIndex === index }">
+          {{ categor }}
+        </button>
+</div>
+    </div>
+<div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-6 px-4 sm:px-8 py-6 w-full max-w-7xl mx-auto">
+  <GameCard v-for="game in games" :key="game.id" :game="game" />
+</div>
+</div>
 </template>
 <script setup>
-// ممكن تضيف أي منطق هنا بعدين
+import GameCard from '../components/GameCard.vue';
+import Search from '../components/Search.vue';
+import { ref, onMounted } from 'vue';
+const Category = ['متعددة اللاعبين ' , 'نادرة', 'اسطورية','الأكثر تقييمًا', ' الكلاسيكية', 'الموصى بها', 'الأكثر تحميلا', 'احدث التنزيلات', 'الكل'];
+const categoryRefs = ref([]);
+const activeIndex = ref(Category.length - 1); // تحديد "الكل" كنشط افتراضيًا (المؤشر الأخير)
+const handleCategoryClick = (categor, index) => {
+  // امسح الكلاس active من جميع العناصر
+  categoryRefs.value.forEach(el => el.classList.remove('active'));
+  // أضف active للعنصر المختار
+  categoryRefs.value[index].classList.add('active');
+  activeIndex.value = index;
+  // توجيه إلى الراوتر إذا كنت تستخدم Vue Router
+  if (categor) {
+    // $router.push({ name: 'categories', query: { category: categor } });
+    console.log(`Selected: ${categor}`);
+  }
+};
+onMounted(() => {
+  // تفعيل "الكل" افتراضيًا
+  if (categoryRefs.value[Category.length - 1]) {
+    categoryRefs.value[Category.length - 1].classList.add('active');
+  }
+});
+const games = ref([
+  {
+    id: 1,
+    title: 'Super Mario',
+    image: '/src/assets/imgs/games/mario.png',
+    time: '3 months ago',
+    type: 'Platformer',
+    downloads: 12,
+    description: 'Help Mario jump over obstacles and rescue the princess in this classic adventure.',
+  },
+  {
+    id: 2,
+    title: 'Sonic the Hedgehog',
+    image: '/src/assets/imgs/games/sonic.png',
+    time: '2 months ago',
+    type: 'Action / Adventure',
+    downloads: 20,
+    description: 'Speed through loops and defeat Dr. Robotnik as Sonic in this fast-paced classic.',
+  },
+  {
+    id: 3,
+    title: 'Plants vs. Zombies',
+    image: '/src/assets/imgs/games/zombie.png',
+    time: '1 month ago',
+    type: 'Tower Defense',
+    downloads: 60,
+    description: 'Strategically place plants to defend your home from waves of quirky zombies.',
+  },
+  {
+    id: 4,
+    title: 'Ultimate Spider‑Man',
+    image: '/src/assets/imgs/games/spider.png',
+    time: '2 months ago',
+    type: 'Beat ’em up',
+    downloads: 25,
+    description: 'Swing through the city and fight as both Spider‑Man and Venom in comic-style action.',
+  },
+  {
+    id: 5,
+    title: 'God of War',
+    image: '/src/assets/imgs/games/god-war.png',
+    time: '4 months ago',
+    type: 'Action / Adventure',
+    downloads: 75,
+    description: 'Join Kratos and Atreus on a mythical journey through Norse realms and gods.',
+  },
+  {
+    id: 6,
+    title: 'The Witcher 3: Wild Hunt',
+    image: '/src/assets/imgs/games/wetcher.png',
+    time: '1 month ago',
+    type: 'Action RPG',
+    downloads: 120,
+    description: 'Play as Geralt and explore a vast open world full of monsters, magic, and intrigue.',
+  },
+]);
 </script>
 <style scoped>
 .backface-hidden {
@@ -80,5 +182,13 @@
 }
 .rotate-y-180 {
   transform: rotateY(180deg);
+}
+.active {
+  background-color: #15ded4;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  /* border-bottom: 2px solid #15ded4; */
+  padding:3px 15px 5px 15px;
 }
 </style>
