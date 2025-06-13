@@ -11,7 +11,7 @@
 </h2>
 <span class="min-w-max bg-blue-100 text-blue-700 text-sm font-medium px-3 rounded-full self-start">
         {{ game.date }}
-  {{ game.time }}
+  {{ game.time }} Pc
 </span>
       </div>
 <span
