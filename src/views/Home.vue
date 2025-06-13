@@ -123,7 +123,7 @@ const games = ref([
   {
     id: 1,
     title: 'Super Mario',
-    image: '/src/assets/imgs/panners/mario.png',
+    image: '/games/mario.png',
     time: '3 months ago',
     type: 'Platformer',
     downloads: 12,
@@ -132,7 +132,7 @@ const games = ref([
   {
     id: 2,
     title: 'Sonic the Hedgehog',
-    image: '/src/assets/imgs/games/sonic.png',
+    image: '/games/sonic.png',
     time: '2 months ago',
     type: 'Action / Adventure',
     downloads: 20,
@@ -141,7 +141,7 @@ const games = ref([
   {
     id: 3,
     title: 'Plants vs. Zombies',
-    image: '/src/assets/imgs/games/zombie.png',
+    image: '/games/zombie.png',
     time: '1 month ago',
     type: 'Tower Defense',
     downloads: 60,
@@ -150,7 +150,7 @@ const games = ref([
   {
     id: 4,
     title: 'Ultimate Spider‑Man',
-    image: '/src/assets/imgs/games/spider.png',
+    image: '/games/spider.png',
     time: '2 months ago',
     type: 'Beat ’em up',
     downloads: 25,
@@ -159,7 +159,7 @@ const games = ref([
   {
     id: 5,
     title: 'God of War',
-    image: '/src/assets/imgs/games/god-war.png',
+    image: '/games/god-war.png',
     time: '4 months ago',
     type: 'Action / Adventure',
     downloads: 75,
@@ -168,7 +168,7 @@ const games = ref([
   {
     id: 6,
     title: 'The Witcher 3: Wild Hunt',
-    image: '/src/assets/imgs/games/wetcher.png',
+    image: '/games/wetcher.png',
     time: '1 month ago',
     type: 'Action RPG',
     downloads: 120,
