@@ -14,9 +14,12 @@
   {{ game.time }}
 </span>
       </div>
-      <span class="inline-block text-sm text-[#FA9448] font-medium rounded-full py-1">
-        {{ game.type }}
-      </span>
+<span
+  class="inline-block text-sm font-medium rounded-full py-1 "
+  :style="{ color: getColor(game.type) }"
+>
+  {{ game.type }}
+</span>
 <p class="text-[#939DA1] text-sm leading-relaxed min-h-[72px] line-clamp-3">
   {{ game.description || "No description available." }}
 </p>
@@ -36,4 +39,20 @@
 defineProps({
   game: Object
 });
+const getColor = (type) => {
+  switch (type) {
+    case 'Platformer':
+      return '#188038';
+    case 'Action / Adventure':
+      return '#1A73E8';
+    case 'Tower Defense':
+      return '#A142F4';
+    case 'Action RPG':
+      return '#E91E63'; // مثال إضافي
+    case 'Beat ’em up':
+      return '#FB8C00'; // مثال إضافي
+    default:
+      return '#999'; // لون افتراضي
+  }
+};
 </script>
