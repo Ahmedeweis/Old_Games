@@ -123,7 +123,7 @@ const games = ref([
   {
     id: 1,
     title: 'Super Mario',
-    image: '/src/assets/imgs/games/mario.png',
+    image: '/src/assets/imgs/panners/mario.png',
     time: '3 months ago',
     type: 'Platformer',
     downloads: 12,
