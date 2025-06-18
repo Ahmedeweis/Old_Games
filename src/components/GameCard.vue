@@ -28,9 +28,12 @@
           <img src="../assets/imgs/download.png" class="w-5" />
           <span class="ml-2.5 text-gray-400">{{ game.downloads }}</span>
         </span>
-        <button class="bg-purple-800 cursor-pointer text-white px-5 py-2 rounded-lg shadow-md hover:bg-purple-700 transition-all duration-200">
-          تحميل
-        </button>
+<router-link
+  :to="`/game/${game.id}`"
+  class="bg-purple-800 cursor-pointer text-white px-5 py-2 rounded-lg shadow-md hover:bg-purple-700 transition-all duration-200"
+>
+  تحميل
+</router-link>
       </div>
     </div>
   </div>
@@ -42,17 +45,27 @@ defineProps({
 const getColor = (type) => {
   switch (type) {
     case 'Platformer':
-      return '#188038';
+      return '#188038'; // أخضر
     case 'Action / Adventure':
-      return '#1A73E8';
+      return '#1A73E8'; // أزرق
     case 'Tower Defense':
-      return '#A142F4';
-    case 'Action RPG':
-      return '#E91E63'; // مثال إضافي
+      return '#A142F4'; // بنفسجي
     case 'Beat ’em up':
-      return '#FB8C00'; // مثال إضافي
+      return '#FB8C00'; // برتقالي
+    case 'Action RPG':
+      return '#E91E63'; // وردي
+    case 'Sandbox / Survival':
+      return '#4CAF50'; // أخضر غامق
+    case 'Action / Open World':
+      return '#9C27B0'; // بنفسجي داكن
+    case 'First-Person Shooter':
+      return '#FF5722'; // برتقالي غامق
+    case 'Sports / Football':
+      return '#2196F3'; // أزرق فاتح
+    case 'Battle Royale':
+      return '#FF5252'; // أحمر فاتح
     default:
-      return '#999'; // لون افتراضي
+      return '#999'; // رمادي افتراضي
   }
 };
 </script>

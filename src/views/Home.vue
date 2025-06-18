@@ -95,8 +95,10 @@
 </div>
 </template>
 <script setup>
+import rawGames from '../services/rawGames';
 import GameCard from '../components/GameCard.vue';
 import Search from '../components/Search.vue';
+import Game from '../models/Game.js' // تأكد من أن مسار Game.js صحيح
 import { ref, onMounted } from 'vue';
 const Category = ['متعددة اللاعبين ' , 'نادرة', 'اسطورية','الأكثر تقييمًا', ' الكلاسيكية', 'الموصى بها', 'الأكثر تحميلا', 'احدث التنزيلات', 'الكل'];
 const categoryRefs = ref([]);
@@ -119,62 +121,7 @@ onMounted(() => {
     categoryRefs.value[Category.length - 1].classList.add('active');
   }
 });
-const games = ref([
-  {
-    id: 1,
-    title: 'Super Mario',
-    image: '/games/mario.png',
-    time: '1985',
-    type: 'Platformer',
-    downloads: 12,
-    description: 'Help Mario jump over obstacles and rescue the princess in this classic adventure.',
-  },
-  {
-    id: 2,
-    title: 'Sonic the Hedgehog',
-    image: '/games/sonic.png',
-    time: '1991',
-    type: 'Action / Adventure',
-    downloads: 20,
-    description: 'Speed through loops and defeat Dr. Robotnik as Sonic in this fast-paced classic.',
-  },
-  {
-    id: 3,
-    title: 'Plants vs. Zombies',
-    image: '/games/zombie.png',
-    time: '2009',
-    type: 'Tower Defense',
-    downloads: 60,
-    description: 'Strategically place plants to defend your home from waves of quirky zombies.',
-  },
-  {
-    id: 4,
-    title: 'Ultimate Spider‑Man',
-    image: '/games/spider.png',
-    time: '2005',
-    type: 'Beat ’em up',
-    downloads: 25,
-    description: 'Swing through the city and fight as both Spider‑Man and Venom in comic-style action.',
-  },
-  {
-    id: 5,
-    title: 'God of War',
-    image: '/games/god-war.png',
-    time: '2005',
-    type: 'Action / Adventure',
-    downloads: 75,
-    description: 'Join Kratos and Atreus on a mythical journey through Norse realms and gods.',
-  },
-  {
-    id: 6,
-    title: 'The Witcher 3: Wild Hunt',
-    image: '/games/wetcher.png',
-    time: '2015',
-    type: 'Action RPG',
-    downloads: 120,
-    description: 'Play as Geralt and explore a vast open world full of monsters, magic, and intrigue.',
-  },
-]);
+const games = ref(rawGames.map(game => new Game(game)));
 </script>
 <style scoped>
 .backface-hidden {
