@@ -1,7 +1,7 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import GameDetails from "../views/GameDetails.vue"; // ← تأكد من اسم الملف ومكانه
+import GameDetails from "../views/GameDetails.vue";
 const routes = [
   {
     path: "/",
@@ -9,11 +9,31 @@ const routes = [
     component: Home,
   },
   {
-    path: "/game/:id", // ← ID ديناميكي
+    path: "/game/:id",
     name: "GameDetails",
     component: GameDetails,
-    props: true, // ← يسهل تمرير ID كـ prop لو حبيت
+    props: true,
   },
+  // {
+  //   path: "/about",
+  //   name: "About",
+  //   component: () => import("@/views/About.vue"),
+  // },
+  // {
+  //   path: "/contact",
+  //   name: "Contact",
+  //   component: () => import("@/views/Contact.vue"),
+  // },
+  // {
+  //   path: "/game",
+  //   name: "Game",
+  //   component: () => import("@/views/Game.vue"),
+  // },
+  // {
+  //   path: "/categories",
+  //   name: "Categories",
+  //   component: () => import("@/views/Categories.vue"),
+  // },
 ];
 const router = createRouter({
   history: createWebHistory(),

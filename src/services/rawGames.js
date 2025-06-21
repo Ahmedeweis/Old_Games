@@ -18,7 +18,7 @@ const rawGames = [
     title: "Sonic the Hedgehog",
     image: "/games/sonic.png",
     time: "1991",
-    type: "Action / Adventure",
+    type: "Action | Adventure",
     downloads: 20,
     description:
       "Speed through loops and defeat Dr. Robotnik as Sonic in this fast-paced classic.",
@@ -57,7 +57,7 @@ const rawGames = [
     title: "God of War",
     image: "/games/god-war.png",
     time: "2005",
-    type: "Action / Adventure",
+    type: "Action | Adventure",
     downloads: 75,
     description:
       "Join Kratos and Atreus on a mythical journey through Norse realms and gods.",
@@ -84,7 +84,7 @@ const rawGames = [
     title: "Minecraft",
     image: "/games/minecraft.png",
     time: "2011",
-    type: "Sandbox / Survival",
+    type: "Sandbox | Survival",
     downloads: 200,
     description:
       "Build, mine, and explore infinite worlds alone or with friends in creative or survival mode.",
@@ -98,7 +98,7 @@ const rawGames = [
     title: "GTA: San Andreas",
     image: "/games/gta.png",
     time: "2004",
-    type: "Action / Open World",
+    type: "Action | Open World",
     downloads: 150,
     description:
       "Follow CJ’s story as he returns to the streets and builds his gang empire in Los Santos.",
@@ -125,7 +125,7 @@ const rawGames = [
     title: "FIFA 22",
     image: "/games/fifa.png",
     time: "2021",
-    type: "Sports / Football",
+    type: "Sports | Football",
     downloads: 110,
     description:
       "Compete with the world’s best teams and players in realistic football matches.",
