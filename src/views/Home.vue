@@ -3,18 +3,16 @@
     <!-- الخلفية الداكنة مع تأثير متوهج -->
     <div class="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black opacity-90"></div>
     <!-- النص الرئيسي -->
-<div class="relative z-10 text-center px-4">
-  <h1 class="text-2xl sm:text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r mt-6 md:mt-10 from-cyan-400 to-blue-600 mb-4 leading-snug md:leading-tight">
-    حمل أجمل الألعاب القديمة <br> ! والمجانية والآمنة
-  </h1>
+<div class="relative z-10 text-center">
+<h1 class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r mt-10 from-cyan-400 to-blue-600 mb-4 leading-tight">
+   حمل أجمل الألعاب القديمة <br> ! والمجانية والآمنة
+</h1>
   <!-- الأزرار -->
-  <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:space-x-4">
-    <a href="#games" class="bg-cyan-400 text-black px-6 py-2 rounded-lg hover:bg-cyan-500 transition cursor-pointer w-full sm:w-auto text-center">
+  <div class="space-x-4 flex justify-center">
+    <a href="#games"  class="bg-cyan-400 text-black px-6 py-2 rounded-lg hover:bg-cyan-500 transition cursor-pointer">
       ابدأ اللعب دلوقتي
     </a>
-    <a href="https://t.me/BaR0dy" target="_blank" class="bg-gray-800 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition cursor-pointer w-full sm:w-auto text-center">
-      انضم علي قناه تيلجرام
-    </a>
+    <a href="https://t.me/BaR0dy" target="_blank" class="bg-gray-800 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition cursor-pointer">  انضم علي قناه تيلجرام</a>
   </div>
 </div>
     <!-- الأطر للشخصيات -->
@@ -77,7 +75,7 @@
     <div class="max-w-7xl  w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-end py-3 gap-4">
         <!-- <img src="../assets/imgs/panners/pager3.png" class="w-[600px] h-[150px] object-cover rounded-lg shadow-lg" alt="Pager Image"> -->
 <div class="flex flex-col self-end text-end">
-  <h3 class="text-xl md:text-[40px] mt-0 font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 mb-2 md:mb-4 leading-snug whitespace-nowrap">
+  <h3 class="text-4xl md:text-[40px] mt-0 font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 mb-2 md:mb-4 leading-snug break-words">
     اختار اللعبة المناسبة ليك
   </h3>
   <div class="flex justify-end">
