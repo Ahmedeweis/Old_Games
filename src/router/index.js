@@ -1,7 +1,9 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import Contact from "../views/Contact.vue";
 import GameDetails from "../views/GameDetails.vue";
+import aboutUs from "../views/aboutUs.vue";
 const routes = [
   {
     path: "/",
@@ -14,16 +16,16 @@ const routes = [
     component: GameDetails,
     props: true,
   },
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   component: () => import("@/views/About.vue"),
-  // },
-  // {
-  //   path: "/contact",
-  //   name: "Contact",
-  //   component: () => import("@/views/Contact.vue"),
-  // },
+  {
+    path: "/about",
+    name: "من نحن",
+    component: aboutUs,
+  },
+  {
+    path: "/contact",
+    name: "تواصل معنا",
+    component: Contact,
+  },
   // {
   //   path: "/game",
   //   name: "Game",

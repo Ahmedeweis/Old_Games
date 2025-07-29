@@ -1,11 +1,10 @@
-// tailwind.config.js
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
         primary: "#1D4ED8",
-        praimary: "#9B7D77", // <== الغلط الإملائي ممكن يلخبطك
+        praimary: "#9B7D77",
       },
     },
   },

@@ -48,7 +48,7 @@
       </div>
     </div>
     <!-- زر البحث -->
-    <button class="text-white bg-gray-800 px-4 py-2 rounded-lg hover:bg-white transition duration-300 hover:text-gray-800 w-full md:w-auto ml-2">
+    <button class="text-white cursor-pointer bg-gray-800 px-4 py-2 rounded-lg hover:bg-white transition duration-300 hover:text-gray-800 w-full md:w-auto ml-2">
       بحث
     </button>
   </div>

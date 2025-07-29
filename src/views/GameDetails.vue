@@ -35,36 +35,36 @@
           </div>
         </div>
         <div class="flex flex-col space-y-4">
-<a href=""
-  class="bg-[#3E3E5E] text-white px-4 py-2 rounded-lg hover:bg-indigo-950 transition duration-300 inline-flex items-center justify-center gap-2 h-[50px]">
-  <span class="order-1">تحميل اللعبة من تليجرام</span>
-  <svg class="w-6 h-6 order-2" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" fill-rule="evenodd">
-      <circle fill="#37AEE2" cx="120" cy="120" r="120" />
-      <path fill="#C8DAEA"
-        d="M100.632 161.98l-3.958 45.09c5.65 0 8.12-2.44 11.21-5.36l26.86-25.58 55.78 40.67c10.23 5.63 17.63 2.67 20.26-9.49l36.69-172.55.002-.002c2.25-10.61-3.86-14.63-13.18-11.64l-210.12 81.03c-14.33 5.7-14.26 13.81-2.61 17.49l53.83 16.81 124.73-78.42c5.87-3.74 11.23-1.75 6.82 2.4L100.63 161.98z" />
-      <path fill="#A9C9DD"
-        d="M100.632 161.98l-3.958 45.09c5.65 0 8.12-2.44 11.21-5.36l26.86-25.58 55.78 40.67c10.23 5.63 17.63 2.67 20.26-9.49l36.69-172.55c2.25-10.61-3.86-14.63-13.18-11.64l-210.12 81.03c-14.33 5.7-14.26 13.81-2.61 17.49l53.83 16.81 124.73-78.42c5.87-3.74 11.23-1.75 6.82 2.4L100.63 161.98z" />
-    </g>
-  </svg>
-</a>
-<a href=""
-  class="bg-[#2BCFAD] text-white px-4 py-2 rounded-lg hover:bg-emerald-500 transition duration-300 inline-flex items-center justify-center gap-2">
-  <img src="../assets/imgs/drive.png" class="w-5 h-5 order-2" alt="Google Drive Icon">
-  <span class="order-1">تحميل اللعبة من درايف</span>
-</a>
-<a href=""
-  class="bg-[#F83356] text-white px-4 py-2 rounded-lg hover:bg-rose-600 transition duration-300 inline-flex items-center justify-center gap-2 h-[50px]">
-  <span class="order-1">تحميل اللعبة من ميجا</span>
-  <svg class="w-6 h-6 order-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-    <path fill-rule="evenodd" clip-rule="evenodd"
-      d="M12 24C5.376 24 0 18.624 0 12C0 5.376 5.376 0 12 0C18.624 0 24 5.376 24 12C24 18.624 18.624 24 12 24Z"
-      fill="#DD1405" />
-    <path fill-rule="evenodd" clip-rule="evenodd"
-      d="M18 15.653C18 15.848 17.8425 15.9997 17.6475 15.9997H16.1325C15.9375 15.9997 15.78 15.848 15.78 15.653V11.1247C15.78 11.0813 15.7275 11.0669 15.705 11.0886L12.5025 14.2086C12.225 14.483 11.775 14.483 11.4975 14.2086L8.295 11.0886C8.2725 11.0669 8.22 11.0813 8.22 11.1247V15.653C8.22 15.848 8.0625 15.9997 7.8675 15.9997H6.3525C6.1575 15.9997 6 15.848 6 15.653V7.67967C6 7.48467 6.1575 7.33301 6.3525 7.33301H7.395C7.5825 7.33301 7.7625 7.40523 7.8975 7.53523L11.8725 11.4136C11.94 11.4786 12.06 11.4786 12.1275 11.4136L16.1025 7.53523C16.2375 7.40523 16.4175 7.33301 16.605 7.33301H17.6475C17.8425 7.33301 18 7.48467 18 7.67967V15.653Z"
-      fill="white" />
-  </svg>
-</a>
+          <a href=""
+            class="bg-[#3E3E5E] text-white px-4 py-2 rounded-lg hover:bg-indigo-950 transition duration-300 inline-flex items-center justify-center gap-2 h-[50px]">
+            <span class="order-1">تحميل اللعبة من تليجرام</span>
+            <svg class="w-6 h-6 order-2" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" fill-rule="evenodd">
+                <circle fill="#37AEE2" cx="120" cy="120" r="120" />
+                <path fill="#C8DAEA"
+                  d="M100.632 161.98l-3.958 45.09c5.65 0 8.12-2.44 11.21-5.36l26.86-25.58 55.78 40.67c10.23 5.63 17.63 2.67 20.26-9.49l36.69-172.55.002-.002c2.25-10.61-3.86-14.63-13.18-11.64l-210.12 81.03c-14.33 5.7-14.26 13.81-2.61 17.49l53.83 16.81 124.73-78.42c5.87-3.74 11.23-1.75 6.82 2.4L100.63 161.98z" />
+                <path fill="#A9C9DD"
+                  d="M100.632 161.98l-3.958 45.09c5.65 0 8.12-2.44 11.21-5.36l26.86-25.58 55.78 40.67c10.23 5.63 17.63 2.67 20.26-9.49l36.69-172.55c2.25-10.61-3.86-14.63-13.18-11.64l-210.12 81.03c-14.33 5.7-14.26 13.81-2.61 17.49l53.83 16.81 124.73-78.42c5.87-3.74 11.23-1.75 6.82 2.4L100.63 161.98z" />
+              </g>
+            </svg>
+          </a>
+          <a href=""
+            class="bg-[#2BCFAD] text-white px-4 py-2 rounded-lg hover:bg-emerald-500 transition duration-300 inline-flex items-center justify-center gap-2">
+            <img src="../assets/imgs/drive.png" class="w-5 h-5 order-2" alt="Google Drive Icon">
+            <span class="order-1">تحميل اللعبة من درايف</span>
+          </a>
+          <a href=""
+            class="bg-[#F83356] text-white px-4 py-2 rounded-lg hover:bg-rose-600 transition duration-300 inline-flex items-center justify-center gap-2 h-[50px]">
+            <span class="order-1">تحميل اللعبة من ميجا</span>
+            <svg class="w-6 h-6 order-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12 24C5.376 24 0 18.624 0 12C0 5.376 5.376 0 12 0C18.624 0 24 5.376 24 12C24 18.624 18.624 24 12 24Z"
+                fill="#DD1405" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M18 15.653C18 15.848 17.8425 15.9997 17.6475 15.9997H16.1325C15.9375 15.9997 15.78 15.848 15.78 15.653V11.1247C15.78 11.0813 15.7275 11.0669 15.705 11.0886L12.5025 14.2086C12.225 14.483 11.775 14.483 11.4975 14.2086L8.295 11.0886C8.2725 11.0669 8.22 11.0813 8.22 11.1247V15.653C8.22 15.848 8.0625 15.9997 7.8675 15.9997H6.3525C6.1575 15.9997 6 15.848 6 15.653V7.67967C6 7.48467 6.1575 7.33301 6.3525 7.33301H7.395C7.5825 7.33301 7.7625 7.40523 7.8975 7.53523L11.8725 11.4136C11.94 11.4786 12.06 11.4786 12.1275 11.4136L16.1025 7.53523C16.2375 7.40523 16.4175 7.33301 16.605 7.33301H17.6475C17.8425 7.33301 18 7.48467 18 7.67967V15.653Z"
+                fill="white" />
+            </svg>
+          </a>
         </div>
         <div class="mt-6">
           <div class="flex items-center justify-between text-gray-500">
@@ -117,8 +117,51 @@
             <button class="bg-[#009089] text-white px-4 py-2 rounded-lg  transition duration-300">مزيد عن العبة</button>
           </div>
         </div>
-        <div class="bg-[#F8F8F4] rounded-lg shadow-lg p-6 mt-6 w-full">
-          جاري الانشاء ...
+        <div class="bg-[#F8F8F4] rounded-lg shadow-lg p-6 mt-6 w-full text-right">
+          <div class="info-header flex justify-around items-center flex-row-reverse  mb-6">
+            <h2 class=" font-bold text-center text-gray-800 cursor-pointer ">تفاصيل اللعبة</h2>
+            <h2 class=" text-center text-gray-600 cursor-pointer " >أجزاء اللعبة</h2>
+            <h2 class="  text-center text-gray-600 cursor-pointer ">المزيد عن اللعبة</h2>
+          </div>
+          <!-- القسم 1 -->
+          <div class="info-content bg-white p-6 rounded-lg shadow-md mb-6">
+<h2 class="text-xl font-semibold text-blue-700 mb-2">وصف اللعبة</h2>
+<p class="text-gray-700">
+  لعبة مغامرات وعالم مفتوح تتيح لك اللعب بشخصية سبايدرمان في مدينة نيويورك، حيث يمكنك التنقل بين ناطحات السحاب ومحاربة الأشرار.
+  تقدم اللعبة قصة مشوقة مليئة بالتحديات والمهمات الجانبية التي تزيد من عمق التجربة.
+  تتميز برسومات واقعية ونظام قتال سلس يتيح لك تنفيذ حركات مذهلة أثناء المعارك.
+  استعد لخوض تجربة بصرية وصوتية غامرة، وكأنك تعيش داخل عالم مارفل الحقيقي.
+</p>
+          </div>
+          <!-- القسم 2 -->
+          <div class="info-content bg-white p-6 rounded-lg shadow-md mb-6">
+<h2 class="text-xl font-semibold text-blue-700 mb-2">أسلوب اللعب</h2>
+<p class="text-gray-700">
+  سبايدر مان هو بطل مدينة نيويورك، حيث يمكنك استخدام خيوط العنكبوت للتنقل بسلاسة بين ناطحات السحاب ومحاربة الأشرار بأسلوب قتال سريع ومتنوع.
+  اللعبة تقدم مهام رئيسية مثيرة وأخرى جانبية مثل إنقاذ المدنيين أو منع السرقات، مما يمنحك تجربة مليئة بالحركة.
+  يمكنك ترقية مهارات سبايدرمان، وفتح بدلات جديدة، ولكل بدلة قدراتها الخاصة التي تؤثر في أسلوب اللعب.
+  بالإضافة إلى ذلك، تقدم اللعبة ألغازاً ذكية ومهام تجسس تتطلب التفكير، مما يضيف عمقاً إلى التجربة ويكسر روتين القتال.
+</p>
+          </div>
+          <!-- القسم 3 -->
+          <div class="info-content bg-white p-6 rounded-lg shadow-md mb-6  flex flex-col items-end">
+            <h2 class="text-xl font-semibold  text-right text-blue-700 mb-4">معلومات إضافية</h2>
+            <ul class="space-y-4 flex flex-col items-end">
+              <li class="flex items-center space-x-4">
+                <p class="text-gray-700"> PlayStation 4, PlayStation 5, PC : متوفرة علي  </p>
+                           <img src="/games/spider.png" alt="غلاف اللعبة"
+                  class="w-20 h-28 object-cover rounded shadow" />
+              </li>
+              <li class="flex items-center space-x-0">
+                <p class="text-gray-700 mr-5">النوع: أكشن - مغامرات - عالم مفتوح</p>
+                   <img src="https://cdn-icons-png.flaticon.com/512/841/841364.png" alt="نوع اللعبة" class="w-8 h-8" />
+              </li>
+              <li class="flex items-center space-x-4">
+                <p class="text-gray-700">التقييم العمري: +16</p>
+                           <img src="https://cdn-icons-png.flaticon.com/512/456/456212.png" alt="تقييم الأعمار" class="w-8 h-8" />
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
