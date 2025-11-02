@@ -1,30 +1,41 @@
-// src/router/index.js
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import Contact from "../views/Contact.vue";
-import GameDetails from "../views/GameDetails.vue";
-import aboutUs from "../views/aboutUs.vue";
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: () => import("../views/Home.vue"),
   },
   {
     path: "/game/:id",
     name: "GameDetails",
-    component: GameDetails,
+    component: () => import("../views/GameDetails.vue"),
     props: true,
   },
   {
     path: "/about",
     name: "من نحن",
-    component: aboutUs,
+    component: () => import("../views/aboutUs.vue"),
   },
   {
     path: "/contact",
     name: "تواصل معنا",
-    component: Contact,
+    component: () => import("../views/Contact.vue"),
+  },
+  {
+    path: "/TestBak",
+    name: "تيست الباك",
+    component: () => import("../views/TestBak.vue"),
+  },
+  {
+    path: "/zAllGames",
+    name: "كل الألعاب",
+    component: () => import("../views/zAllGamesView.vue"),
+  },
+  {
+    path: "/zgame/:id",
+    name: "ZGameDetails",
+    component: () => import("../views/zGameDetailsView.vue"),
+    props: true,
   },
   // {
   //   path: "/game",
