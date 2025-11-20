@@ -1,14 +1,18 @@
 <template>
   <div
     class="relative bg-cover bg-center h-32 flex items-center text-white"
-    :style="{ backgroundImage: `url(${finalBg})` }"
+    :style="{ backgroundImage: `url(${game?.cover_image || defaultBanner})` }"
   >
-    <!-- الـ Layer المعتم -->
+    <!-- Layer المعتم -->
     <div class="absolute inset-0 bg-black/50"></div>
-    <!-- الـ Container الموحد مع الهيدر -->
+    <!-- نفس Container الأول بالظبط -->
     <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center py-3">
       <div class="text-start">
-        <h1 class="text-3xl font-bold mb-2 text-end">{{ currentTitle }}</h1>
+        <!-- العنوان لو عايز تعرضه زي الأول -->
+        <h1 class="text-3xl font-bold mb-2 text-end">
+          {{ translatedTitle || game?.title_en || pageTitle }}
+        </h1>
+        <!-- الـ Breadcrumb نفسه 1:1 -->
         <nav class="flex justify-center items-center flex-row-reverse text-sm text-gray-300 flex-wrap gap-1">
           <template v-for="(item, index) in autoBreadcrumbs" :key="index">
             <router-link
@@ -18,7 +22,10 @@
             >
               {{ item.name }}
             </router-link>
-            <span v-else class="text-white font-semibold">
+            <span
+              v-else
+              class="text-white font-semibold"
+            >
               {{ item.name }}
             </span>
             <svg
@@ -39,40 +46,37 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted, watch, computed } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
-// Props
-const props = defineProps({
-  bgImage: String,
-  currentTitle: String,
-})
-// Vue Router
+import { getGameById } from '../../services/gameService'
 const route = useRoute()
-// Default fallback image
-const fallbackImage = '/games/default.jpg'
-const finalBg = ref(fallbackImage)
-// Check if image URL is valid
-const testImage = (url) => {
-  return new Promise((resolve, reject) => {
-    const img = new Image()
-    img.src = url
-    img.onload = () => resolve(url)
-    img.onerror = () => reject()
-  })
-}
-// Load background image, fallback if invalid
-const loadBgImage = () => {
-  if (!props.bgImage) {
-    finalBg.value = fallbackImage
-  } else {
-    testImage(props.bgImage)
-      .then(() => (finalBg.value = props.bgImage))
-      .catch(() => (finalBg.value = fallbackImage))
+const game = ref(null)
+const translatedTitle = ref('')
+const defaultBanner = '/assets/imgs/default-banner.jpg' // صورة افتراضية لكل الصفحات
+// العنوان الافتراضي لكل صفحة غير لعبة
+const pageTitle = computed(() => {
+  if (route.path.includes('contact')) return 'تواصل معنا'
+  if (route.path.includes('about')) return 'من نحن'
+  if (route.path.includes('offers')) return 'العروض'
+  return 'مرحبا بك'
+})
+async function translateToArabic(text) {
+  try {
+    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|ar`)
+    const data = await res.json()
+    translatedTitle.value = data.responseData.translatedText || text
+  } catch (e) {
+    translatedTitle.value = text
   }
 }
-onMounted(loadBgImage)
-watch(() => props.bgImage, loadBgImage)
-// Breadcrumb translations
+onMounted(async () => {
+  const id = route.params.id
+  if (id) {
+    game.value = await getGameById(id)
+    if (game.value?.title) translateToArabic(game.value.title)
+  }
+})
+// Breadcrumb logic زي اللي عندك
 const translations = {
   Home: 'الرئيسية',
   game: 'الألعاب',
@@ -81,21 +85,14 @@ const translations = {
   contact: 'اتصل بنا',
   about: 'من نحن',
 }
-// Generate breadcrumb items dynamically
 const autoBreadcrumbs = computed(() => {
   const segments = route.path.split('/').filter(Boolean)
-  const breadcrumbList = []
+  const breadcrumbList = [{ name: 'الرئيسية', path: '/' }]
   let fullPath = ''
-  if (segments.length === 0) {
-    return [{ name: 'الرئيسية', path: '/' }]
-  }
-  breadcrumbList.push({ name: 'الرئيسية', path: '/' })
-  segments.forEach((seg, index) => {
+  segments.forEach(seg => {
     fullPath += '/' + seg
     const isId = seg.match(/^\d+$/) || seg.length > 20
-    const name = isId
-      ? props.currentTitle
-      : translations[seg.toLowerCase()] || seg.replace(/-/g, ' ')
+    const name = isId ? (game.value?.title_en || 'اللعبة') : translations[seg.toLowerCase()] || seg.replace(/-/g, ' ')
     breadcrumbList.push({ name, path: fullPath })
   })
   return breadcrumbList

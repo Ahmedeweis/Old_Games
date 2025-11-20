@@ -11,10 +11,12 @@
     />
       <router-view />
     </main>
+    <Footer />
   </div>
 </template>
 <script setup>
 import Header from './components/Header.vue';
+import Footer from './components/Footer.vue'; // ✅ استدعاء الـ Component الصحيح
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import BreadcrumbBanner from './components/main/BreadcrumbBanner.vue'

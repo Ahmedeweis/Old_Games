@@ -1,18 +1,16 @@
 import axios from "axios";
-import { getOrCreateVisitorId } from "@/utils/session"; // هنضيفه كمان بعد شوية
 const api = axios.create({
-  baseURL: import.meta.env.VITE_APP_API_URL,
+  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api",
   headers: {
     "Content-Type": "application/json",
   },
 });
-// ✅ Interceptor لإضافة visitor_id في كل الطلبات
-api.interceptors.request.use(
-  (config) => {
-    const visitorId = getOrCreateVisitorId();
-    config.headers["X-Visitor-ID"] = visitorId;
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("adminToken");
+  console.log('Token in interceptor:', token); // 🟢 لازم يطبع التوكن هنا
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 export default api;

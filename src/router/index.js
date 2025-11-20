@@ -22,21 +22,24 @@ const routes = [
     component: () => import("../views/Contact.vue"),
   },
   {
-    path: "/TestBak",
-    name: "تيست الباك",
-    component: () => import("../views/TestBak.vue"),
+    path: "/categories",
+    name: "التصنيفات",
+    component: () => import("../views/categories.vue"),
   },
   {
-    path: "/zAllGames",
-    name: "كل الألعاب",
-    component: () => import("../views/zAllGamesView.vue"),
+    path: "/Support",
+    name: "إدعمنا",
+    component: () => import("../views/Support.vue"),
   },
   {
-    path: "/zgame/:id",
-    name: "ZGameDetails",
-    component: () => import("../views/zGameDetailsView.vue"),
-    props: true,
+    path: "/logIn",
+    name: "logIn",
+    component: () => import("../views/LoginView.vue"),
   },
+  { path: "/add-game", name: "Add Game", component: () => import("../views/ZAddGame.vue"), meta: { requiresAuth: true } },
+  { path: "/edit-game/:id", name: "edit-game", component: () => import("../views/ZEditGame.vue"), meta: { requiresAuth: true } },
+  { path: "/GamesTable", name: "Game-Table", component: () => import("../views/GamesTable.vue"), meta: { requiresAuth: true } },
+  { path: "/zgame/:id", name: "ZGameDetails", component: () => import("../views/zGameDetailsView.vue"), props: true, meta: { requiresAuth: true } },
   // {
   //   path: "/game",
   //   name: "Game",
@@ -51,5 +54,12 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem("adminToken");
+  if (to.meta.requiresAuth && !token) {
+    return next({ name: "logIn" }); // لو مفيش توكن يروح login
+  }
+  next();
 });
 export default router;

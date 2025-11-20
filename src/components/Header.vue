@@ -15,7 +15,7 @@
       <!-- روابط التنقل -->
 <nav class="hidden md:flex space-x-4 text-white mt-2.5"  id="mainNav">
 <router-link
-  to="/categories"
+  to="/Support"
   class="nav-link flex items-center text-orange-700 -mt-[10px] font-bold  gap-2  cursor-pointer">
   <!-- أيقونة دعم -->
   <img src="../assets/imgs/favourite.png" alt="Support Icon" class="w-8 h-8" />

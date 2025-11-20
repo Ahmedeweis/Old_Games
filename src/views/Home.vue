@@ -88,6 +88,11 @@
                 @click="handleCategoryClick(categor, index)" :class="{ 'active': activeIndex === index }">
           {{ categor }}
         </button>
+        <div class="w-full flex justify-center mt-3">
+  <p class="text-yellow-300 bg-yellow-500/10 border border-yellow-500/20 px-3 py-1 rounded-lg text-sm">
+     خاصية الفلترة غير مفعّلة حالياً — جارٍ العمل عليها.
+  </p>
+</div>
 </div>
     </div>
 <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-6 px-4 sm:px-8 py-6 w-full max-w-7xl mx-auto">
@@ -96,10 +101,10 @@
 </div>
 </template>
 <script setup>
-import rawGames from '../services/rawGames';
+// import rawGames from '../services/rawGames';
 import GameCard from '../components/GameCard.vue';
 import Search from '../components/Search.vue';
-import Game from '../models/Game.js' // تأكد من أن مسار Game.js صحيح
+// import Game from '../models/Game.js'
 import { ref, onMounted } from 'vue';
 const Category = ['متعددة اللاعبين ' , 'نادرة', 'اسطورية','الأكثر تقييمًا', ' الكلاسيكية', 'الموصى بها', 'الأكثر تحميلا', 'احدث التنزيلات', 'الكل'];
 const categoryRefs = ref([]);
@@ -122,7 +127,31 @@ onMounted(() => {
     categoryRefs.value[Category.length - 1].classList.add('active');
   }
 });
-const games = ref(rawGames.map(game => new Game(game)));
+// const games = ref(rawGames.map(game => new Game(game)));
+import { useRouter } from "vue-router";
+import { getAllGamesSummary } from "../services/gameService";
+const router = useRouter();
+const games = ref([]);
+const loading = ref(true);
+const error = ref(null);
+const defaultImage = "https://via.placeholder.com/300x160?text=No+Image";
+function shortDesc(text) {
+  if (!text) return "";
+  return text.length > 70 ? text.slice(0, 70) + "..." : text;
+}
+function goToDetails(id) {
+  router.push(`/zgame/${id}`);
+}
+onMounted(async () => {
+  try {
+    games.value = await getAllGamesSummary();
+  } catch (err) {
+    error.value = "حدث خطأ أثناء تحميل الألعاب";
+    console.error(err);
+  } finally {
+    loading.value = false;
+  }
+});
 </script>
 <style scoped>
 .backface-hidden {

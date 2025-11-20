@@ -9,39 +9,41 @@
     playOnce
   >
     <div
-      class="bg-[#1E1E1E] rounded-lg shadow-lg overflow-hidden transition-all duration-500 transform hover:scale-105 hover:shadow-2xl h-[460px]"
+      class="bg-[#1E1E1E] w-full rounded-lg shadow-lg overflow-hidden transition-all duration-500 transform hover:scale-105 hover:shadow-2xl h-[460px]"
     >
       <div class="relative">
         <img
-          :src="game.image"
+          :src="game.cover_image"
           @error="e => e.target.src = '/games/default.jpg'"
           class="w-full h-48 object-cover rounded"
         />
       </div>
       <div class="p-6">
-        <div class="flex items-center justify-between mb-3">
-          <h2
+        <div class="flex items-center justify-between ">
+                              <h2
             class="text-xl font-semibold text-white leading-snug h-[3.5rem] overflow-hidden"
           >
-            {{ game.title }}
+            {{ game.title_en }}
           </h2>
           <span
             class="min-w-max bg-blue-100 text-blue-700 text-sm font-medium px-3 rounded-full self-start mt-1.5"
           >
-            {{ game.date }} {{ game.time }} Pc
+            {{ game.release_year }}  Pc
           </span>
         </div>
-        <span
-          class="inline-block text-sm font-medium rounded-full py-1"
-          :style="{ color: getColor(game.type) }"
-        >
-          {{ game.type }}
-        </span>
-        <p
+<div class="w-full text-right">
+  <span
+    class="inline-block text-sm font-medium rounded-full py-1"
+    :style="{ color: getColorById(game.genre_id) }"
+  >
+    {{ game.genre }}
+  </span>
+          <p
           class="text-[#939DA1] text-sm leading-relaxed min-h-[72px] line-clamp-3"
         >
           {{ game.description || "No description available." }}
         </p>
+</div>
         <div class="flex items-center justify-between mt-5">
           <span
             class="text-base font-bold flex items-start justify-center text-gray-700"
@@ -62,6 +64,6 @@
 </template>
 <script setup>
 import GlareHover from './GlareHover.vue'
-import { getColor } from '../utils/gameTypeColors'
+import { getColorById } from '../utils/gameTypeColors'
 defineProps({ game: Object })
 </script>

@@ -1,15 +1,17 @@
 <template>
-  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center py-3">
+  <div v-if="game" class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center py-3">
     <div class="w-full flex justify-between items-center flex-wrap gap-2 my-4">
-      <div class="flex flex-wrap gap-2">
-        <span v-for="(type, index) in categories" :key="index" class="px-3 py-1 text-sm font-semibold rounded-full"
-          :style="{ backgroundColor: getColor(type), color: '#fff' }">
-          {{ type }}
-        </span>
-      </div>
-      <h1 class="text-3xl font-bold text-white">
-        {{ translatedTitle || game.title }}
-      </h1>
+<div class="flex flex-wrap gap-2">
+  <span
+    class="px-3 py-1 text-sm font-semibold rounded-full"
+    :style="{ backgroundColor: getColorById(game.genre_id), color: '#fff' }"
+  >
+    {{ game.genre_name_ar }}
+  </span>
+</div>
+<h1 class="text-3xl font-bold text-white">
+  {{ translatedTitle || game?.title_en }}
+</h1>
     </div>
   </div>
   <div class="z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center ">
@@ -35,7 +37,7 @@
           </div>
         </div>
         <div class="flex flex-col space-y-4">
-          <a href=""
+          <a v-if="game?.telegram_link" :href="game.telegram_link" target="_blank"
             class="bg-[#3E3E5E] text-white px-4 py-2 rounded-lg hover:bg-indigo-950 transition duration-300 inline-flex items-center justify-center gap-2 h-[50px]">
             <span class="order-1">تحميل اللعبة من تليجرام</span>
             <svg class="w-6 h-6 order-2" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
@@ -48,12 +50,12 @@
               </g>
             </svg>
           </a>
-          <a href=""
+          <a v-if="game?.drive_link" :href="game.drive_link" target="_blank"
             class="bg-[#2BCFAD] text-white px-4 py-2 rounded-lg hover:bg-emerald-500 transition duration-300 inline-flex items-center justify-center gap-2">
             <img src="../assets/imgs/drive.png" class="w-5 h-5 order-2" alt="Google Drive Icon">
             <span class="order-1">تحميل اللعبة من درايف</span>
           </a>
-          <a href=""
+          <a v-if="game?.mega_link" :href="game.mega_link" target="_blank"
             class="bg-[#F83356] text-white px-4 py-2 rounded-lg hover:bg-rose-600 transition duration-300 inline-flex items-center justify-center gap-2 h-[50px]">
             <span class="order-1">تحميل اللعبة من ميجا</span>
             <svg class="w-6 h-6 order-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -69,7 +71,7 @@
         <div class="mt-6">
           <div class="flex items-center justify-between text-gray-500">
             <div class="text-end">
-              <h2 class="text-2xl font-bold">4.2/5</h2>
+            <h2 class="text-2xl font-bold">{{ game?.rating ?? 0 }}/5</h2>
               <div class="flex mt-1 justify-end">
                 <img src="../assets/imgs/star.png" class="w-4 inline-block mr-0.5">
                 <img src="../assets/imgs/star.png" class="w-4 inline-block mr-0.5">
@@ -77,12 +79,12 @@
                 <img src="../assets/imgs/star.png" class="w-4 inline-block mr-0.5">
               </div>
             </div>
-            <div>
-              <h2 class="text-2xl font-bold"> {{ game.downloads }}</h2>
-              <div class="flex items-center mt-1">
-                <span class="text-s">تحميلات</span>
-              </div>
-            </div>
+<div>
+  <h2 class="text-2xl font-bold">{{ game?.downloads ?? 0 }}</h2>
+  <div class="flex items-center mt-1">
+    <span class="text-s">تحميلات</span>
+  </div>
+</div>
           </div>
           <div class="flex items-center justify-between text-neutral-600 mt-2">
             <h2 class="text-neutral-600">1,360</h2>
@@ -97,21 +99,24 @@
         <div class="w-full flex flex-col items-end bg-[#F8F8F4] rounded-lg shadow-lg">
           <GlareHover glareColor="#ffffff" glareOpacity="0.25" glareAngle="-30" glareSize="300" transitionDuration="800"
             class="mb-6 rounded-lg shadow-lg overflow-hidden">
-            <img :src="game.image" alt="Game Image" class="w-full h-auto rounded-lg"
-              style="max-width: 100%; max-height: 400px; object-fit: cover;"
-              @error="e => e.target.src = '/games/default.jpg'" />
+<img v-if="game?.cover_image"
+     :src="game.cover_image"
+     alt="Game Image"
+     class="w-full h-auto rounded-lg"
+     style="max-width: 100%; max-height: 400px; object-fit: cover;"
+     @error="e => e.target.src = '/games/default.jpg'" />
           </GlareHover>
           <div class="flex  justify-end gap-9 items-center w-full flex-row px-6 pb-6">
             <div class="flex justify-between items-center space-x-9">
-              <img :src="game.image" alt="Game Image" class=" rounded-lg shadow-lg w-[50px] h-[50px]"
+              <img :src="game?.cover_image" alt="Game Image" class=" rounded-lg shadow-lg w-[50px] h-[50px]"
                 style="object-fit: cover;" @error="e => e.target.src = '/games/default.jpg'">
-              <img :src="game.image" alt="Game Image" class=" rounded-lg shadow-lg w-[50px] h-[50px]"
+              <img :src="game?.cover_image" alt="Game Image" class=" rounded-lg shadow-lg w-[50px] h-[50px]"
                 style="object-fit: cover;" @error="e => e.target.src = '/games/default.jpg'">
-              <img :src="game.image" alt="Game Image" class="rounded-lg shadow-lg w-[50px] h-[50px]"
+              <img :src="game?.cover_image" alt="Game Image" class="rounded-lg shadow-lg w-[50px] h-[50px]"
                 style="object-fit: cover;" @error="e => e.target.src = '/games/default.jpg'">
-              <img :src="game.image" alt="Game Image" class=" rounded-lg shadow-lg w-[50px] h-[50px]"
+              <img :src="game?.cover_image" alt="Game Image" class=" rounded-lg shadow-lg w-[50px] h-[50px]"
                 style="object-fit: cover;" @error="e => e.target.src = '/games/default.jpg'">
-              <img :src="game.image" alt="Game Image" class="rounded-lg shadow-lg w-[50px] h-[50px]"
+              <img :src="game?.cover_image" alt="Game Image" class="rounded-lg shadow-lg w-[50px] h-[50px]"
                 style="object-fit: cover;" @error="e => e.target.src = '/games/default.jpg'">
             </div>
             <button class="bg-[#009089] text-white px-4 py-2 rounded-lg  transition duration-300">مزيد عن العبة</button>
@@ -127,20 +132,14 @@
           <div class="info-content bg-white p-6 rounded-lg shadow-md mb-6">
 <h2 class="text-xl font-semibold text-blue-700 mb-2">وصف اللعبة</h2>
 <p class="text-gray-700">
-  لعبة مغامرات وعالم مفتوح تتيح لك اللعب بشخصية سبايدرمان في مدينة نيويورك، حيث يمكنك التنقل بين ناطحات السحاب ومحاربة الأشرار.
-  تقدم اللعبة قصة مشوقة مليئة بالتحديات والمهمات الجانبية التي تزيد من عمق التجربة.
-  تتميز برسومات واقعية ونظام قتال سلس يتيح لك تنفيذ حركات مذهلة أثناء المعارك.
-  استعد لخوض تجربة بصرية وصوتية غامرة، وكأنك تعيش داخل عالم مارفل الحقيقي.
+{{ game?.description }}
 </p>
           </div>
           <!-- القسم 2 -->
           <div class="info-content bg-white p-6 rounded-lg shadow-md mb-6">
 <h2 class="text-xl font-semibold text-blue-700 mb-2">أسلوب اللعب</h2>
 <p class="text-gray-700">
-  سبايدر مان هو بطل مدينة نيويورك، حيث يمكنك استخدام خيوط العنكبوت للتنقل بسلاسة بين ناطحات السحاب ومحاربة الأشرار بأسلوب قتال سريع ومتنوع.
-  اللعبة تقدم مهام رئيسية مثيرة وأخرى جانبية مثل إنقاذ المدنيين أو منع السرقات، مما يمنحك تجربة مليئة بالحركة.
-  يمكنك ترقية مهارات سبايدرمان، وفتح بدلات جديدة، ولكل بدلة قدراتها الخاصة التي تؤثر في أسلوب اللعب.
-  بالإضافة إلى ذلك، تقدم اللعبة ألغازاً ذكية ومهام تجسس تتطلب التفكير، مما يضيف عمقاً إلى التجربة ويكسر روتين القتال.
+لا يتوفر أسلوب لعب
 </p>
           </div>
           <!-- القسم 3 -->
@@ -148,16 +147,28 @@
             <h2 class="text-xl font-semibold  text-right text-blue-700 mb-4">معلومات إضافية</h2>
             <ul class="space-y-4 flex flex-col items-end">
               <li class="flex items-center space-x-4">
-                <p class="text-gray-700"> PlayStation 4, PlayStation 5, PC : متوفرة علي  </p>
-                           <img src="/games/spider.png" alt="غلاف اللعبة"
-                  class="w-20 h-28 object-cover rounded shadow" />
+            <p class="text-gray-700">
+  متوفرة على : {{ game?.platform_name_ar || 'لا توجد بيانات' }}
+</p>
+                <img v-if="game?.cover_image"
+     :src="game.cover_image"
+     alt="Game Image"
+     class="w-20 h-28 object-cover rounded shadow"
+     style="max-width: 100%; max-height: 400px; object-fit: cover;"
+     @error="e => e.target.src = '/games/default.jpg'" />
               </li>
               <li class="flex items-center space-x-0">
-                <p class="text-gray-700 mr-5">النوع: أكشن - مغامرات - عالم مفتوح</p>
+<p
+  v-if="game && game.genre_id && game.genre_name_ar"
+  class="mr-5 px-3 py-1 text-sm font-semibold rounded-full"
+  :style="{ backgroundColor: getColorById(game.genre_id), color: '#fff' }"
+>
+  النوع: {{ game.genre_name_ar }}
+</p>
                    <img src="https://cdn-icons-png.flaticon.com/512/841/841364.png" alt="نوع اللعبة" class="w-8 h-8" />
               </li>
               <li class="flex items-center space-x-4">
-                <p class="text-gray-700">التقييم العمري: +16</p>
+                <p class="text-gray-700">التقييم العمري: لا يوجد</p>
                            <img src="https://cdn-icons-png.flaticon.com/512/456/456212.png" alt="تقييم الأعمار" class="w-8 h-8" />
               </li>
             </ul>
@@ -188,31 +199,45 @@
 <script setup>
 import GlareHover from '../components/GlareHover.vue'
 import { useRoute } from 'vue-router'
-import { ref, computed, watch } from 'vue'
-import { getColor } from '../utils/gameTypeColors'
-import rawGames from '../services/rawGames'
+import { getColorById } from '../utils/gameTypeColors'
+// import { ref, , watch } from 'vue'
+// import { getColor } from '../utils/gameTypeColors'
+// const getColor = () => '#333'
+// import rawGames from '../services/rawGames'
 const route = useRoute()
 const gameId = parseInt(route.params.id)
-const game = ref(rawGames.find(g => g.id === gameId))
 const categories = computed(() => [game.value?.type] || [])
+// import GlareHover from '../components/GlareHover.vue'
+import { ref, watch, onMounted,computed } from 'vue'
+// import { useRoute } from 'vue-router'
+import { getGameById } from '../services/gameService'
+const game = ref(null)
+const loading = ref(true)
+const error = ref(null)
 const translatedTitle = ref('')
 async function translateToArabic(text) {
   try {
     const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|ar`)
     const data = await res.json()
-    // نحاول نختار "سوبر ماريو" (بفاصل)
-    const exactMatch = data.matches?.find(match =>
-      match.translation.trim() === 'سوبر ماريو'
-    )
-    translatedTitle.value = exactMatch?.translation ||
-      data.responseData.translatedText ||
-      text
   } catch (e) {
-    console.error('❌ فشل الترجمة:', e.message || e)
-    translatedTitle.value = text // fallback
+    console.error('❌ فشل الترجمة:', e)
+    translatedTitle.value = text
   }
 }
-// تشغيل الترجمة عند تغير العنوان
+onMounted(async () => {
+  try {
+    const id = route.params.id
+    game.value = await getGameById(id)
+    if (game.value?.title) {
+      await translateToArabic(game.value.title)
+    }
+  } catch (err) {
+    console.error(err)
+    error.value = 'حدث خطأ أثناء تحميل بيانات اللعبة'
+  } finally {
+    loading.value = false
+  }
+})
 watch(
   () => game.value?.title,
   (newTitle) => {
