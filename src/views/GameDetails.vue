@@ -119,14 +119,14 @@
               <img :src="game?.cover_image" alt="Game Image" class="rounded-lg shadow-lg w-[50px] h-[50px]"
                 style="object-fit: cover;" @error="e => e.target.src = '/games/default.jpg'">
             </div>
-            <button class="bg-[#009089] text-white px-4 py-2 rounded-lg  transition duration-300">مزيد عن العبة</button>
+            <button class="bg-[#009089] text-white px-4 py-2 rounded-lg cursor-not-allowed  transition duration-300">مزيد عن العبة</button>
           </div>
         </div>
         <div class="bg-[#F8F8F4] rounded-lg shadow-lg p-6 mt-6 w-full text-right">
           <div class="info-header flex justify-around items-center flex-row-reverse  mb-6">
             <h2 class=" font-bold text-center text-gray-800 cursor-pointer ">تفاصيل اللعبة</h2>
-            <h2 class=" text-center text-gray-600 cursor-pointer " >أجزاء اللعبة</h2>
-            <h2 class="  text-center text-gray-600 cursor-pointer ">المزيد عن اللعبة</h2>
+            <h2 class=" text-center text-gray-600 cursor-not-allowed " >أجزاء اللعبة</h2>
+            <h2 class="  text-center text-gray-600 cursor-not-allowed ">المزيد عن اللعبة</h2>
           </div>
           <!-- القسم 1 -->
           <div class="info-content bg-white p-6 rounded-lg shadow-md mb-6">
@@ -143,7 +143,7 @@
 </p>
           </div>
           <!-- القسم 3 -->
-          <div class="info-content bg-white p-6 rounded-lg shadow-md mb-6  flex flex-col items-end">
+          <!-- <div class="info-content bg-white p-6 rounded-lg shadow-md mb-6  flex flex-col items-end">
             <h2 class="text-xl font-semibold  text-right text-blue-700 mb-4">معلومات إضافية</h2>
             <ul class="space-y-4 flex flex-col items-end">
               <li class="flex items-center space-x-4">
@@ -172,7 +172,7 @@
                            <img src="https://cdn-icons-png.flaticon.com/512/456/456212.png" alt="تقييم الأعمار" class="w-8 h-8" />
               </li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

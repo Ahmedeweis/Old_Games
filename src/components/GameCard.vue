@@ -20,7 +20,7 @@
       </div>
       <div class="p-6">
         <div class="flex items-center justify-between ">
-                              <h2
+          <h2
             class="text-xl font-semibold text-white leading-snug h-[3.5rem] overflow-hidden"
           >
             {{ game.title_en }}
@@ -31,25 +31,25 @@
             {{ game.release_year }}  Pc
           </span>
         </div>
-<div class="w-full text-right">
-  <span
-    class="inline-block text-sm font-medium rounded-full py-1"
-    :style="{ color: getColorById(game.genre_id) }"
-  >
-    {{ game.genre }}
-  </span>
+        <div class="w-full text-right">
+          <span
+            class="inline-block text-sm font-medium rounded-full py-1"
+            :style="{ color: getColorById(game.genre_id) }"
+          >
+            {{ game.genre }}
+          </span>
           <p
-          class="text-[#939DA1] text-sm leading-relaxed min-h-[72px] line-clamp-3"
-        >
-          {{ game.description || "No description available." }}
-        </p>
-</div>
+            class="text-[#939DA1] text-sm leading-relaxed min-h-[72px] line-clamp-3"
+          >
+            {{ game.description || "No description available." }}
+          </p>
+        </div>
         <div class="flex items-center justify-between mt-5">
           <span
             class="text-base font-bold flex items-start justify-center text-gray-700"
           >
             <img src="../assets/imgs/download.png" class="w-5" />
-            <span class="ml-2.5 text-gray-400">{{ game.downloads }}</span>
+            <span class="ml-2.5 mr-2 text-gray-400">{{ game.downloads }}</span>
           </span>
           <router-link
             :to="`/game/${game.id}`"
@@ -62,6 +62,7 @@
     </div>
   </GlareHover>
 </template>
+
 <script setup>
 import GlareHover from './GlareHover.vue'
 import { getColorById } from '../utils/gameTypeColors'

@@ -85,13 +85,37 @@ onMounted(async () => {
 const searchTerm = ref('')
 const openModal = ref(false)
 const filteredGames = ref([])
+
+const props = defineProps({
+  searchTerm: {
+    type: String,
+    default: ''
+  }
+});
+
+// مراقبة البروب لتحديث القيمة الداخلية (عند المسح من الأب)
+watch(() => props.searchTerm, (newVal) => {
+  searchTerm.value = newVal;
+  if (newVal === '') {
+    selectedCategory.value = 'النوع';
+  }
+});
+
+const emit = defineEmits(['search', 'category-change']);
+
+// Watch على القائمة المنسدلة
+watch(selectedCategory, (newVal) => {
+  emit('category-change', newVal === 'النوع' ? 'الكل' : newVal);
+});
+
 // Watch على البحث
 watch(searchTerm, async (term) => {
+  emit('search', term);
   if (!term) {
     filteredGames.value = []
     return
   }
-  openModal.value = true
+  openModal.value = true;
   try {
     const results = await searchGames(term)
     filteredGames.value = results

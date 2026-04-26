@@ -2,8 +2,24 @@
   <div dir="rtl" class="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 p-6 flex justify-center items-start">
     <!-- Container واسع + Shadow جميل -->
     <div class="max-w-4xl w-full bg-white rounded-2xl shadow-2xl p-10 mt-10">
-      <h2 class="text-3xl font-bold text-gray-800 text-center mb-4"> تعديل بيانات اللعبة</h2>
-      <p class="text-gray-600 text-center mb-8">قم بتعديل جميع بيانات اللعبة أدناه.</p>
+      
+      <!-- رابط العودة لجدول الألعاب -->
+      <div class="flex justify-between items-center mb-6">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800"> تعديل بيانات اللعبة</h2>
+          <p class="text-gray-600">قم بتعديل جميع بيانات اللعبة أدناه.</p>
+        </div>
+        <router-link 
+          to="/GamesTable" 
+          class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors bg-blue-50 px-4 py-2 rounded-xl border border-blue-100 shadow-sm"
+        >
+          <span>جدول الألعاب</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+        </router-link>
+      </div>
+
       <form @submit.prevent="updateGameData" class="space-y-6">
         <!-- Row 1: الاسم + سنة الإصدار + المنصة -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

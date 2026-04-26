@@ -5,17 +5,16 @@
       <div class="footer-section">
         <h4>تابعنا</h4>
         <div class="social-icons">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a :href="SOCIAL_LINKS.tiktok" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a :href="SOCIAL_LINKS.telegram" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+          <a :href="SOCIAL_LINKS.instagram" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a :href="SOCIAL_LINKS.whatsapp" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <button class="fun-facts-btn">أدعمنا</button>
+        <router-link to="/Support" class="fun-facts-btn" style="text-decoration: none;">أدعمنا</router-link>
       </div>
       <div class="footer-section">
-        <h4>معلومات عنا</h4>
-<p>نحن نصمم أنظمة وبرمجيات مبتكرة بشغف ودقة، محولين أفكارك ورؤيتك إلى واقع منذ عام 2019.
-يمكننا أيضًا تصميم حلول مخصصة تناسب احتياجات شركتك.</p>
+        <h4>عن الموقع</h4>
+<p>موقعنا متخصص في توفير أجمل الألعاب القديمة والكلاسيكية للكمبيوتر، بنسخ آمنة ومجانية تماماً. هدفنا هو إحياء ذكريات الطفولة وتوفير تجربة لعب ممتعة وسهلة للجميع.</p>
       </div>
       <div class="footer-section">
         <h4>روابط سريعة</h4>
@@ -23,147 +22,173 @@
           <li><a href="#home">الرئيسية</a></li>
           <li><a href="#services">الخدمات</a></li>
           <li><a href="#portfolio">معرض الأعمال</a></li>
-          <li><a href="#contact">اتصل بنا</a></li>
+          <li><router-link to="/contact">اتصل بنا</router-link></li>
         </ul>
       </div>
       <div class="footer-section">
         <h4>تواصل معنا</h4>
-        <p>البريد الإلكتروني: Ahmed.eweiis@gmail.com</p>
-        <p>الهاتف:  01093075107</p>
-        <p>الموقع: 14/1200 , القاهرة 02 , مصر</p>
+        <p>البريد الإلكتروني: {{ CONTACT_INFO.email }}</p>
+        <p>الهاتف:  {{ CONTACT_INFO.phone }}</p>
+        <p>الموقع: {{ CONTACT_INFO.address }}</p>
       </div>
     </div>
     <div class="copyright">
-      © 2025 Falcone Core. جميع الحقوق محفوظة.
+      © 2025 ألعاب زمان - Old Games. جميع الحقوق محفوظة.
     </div>
   </footer>
 </template>
 <script setup>
+import { SOCIAL_LINKS, CONTACT_INFO } from '../constants/socialLinks';
 </script>
 <style scoped>
 /* 0 Footer */
 .main-footer {
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-              url('/imgs/footer-bg.jpg') no-repeat center center;
-  background-size: cover;
+  background: linear-gradient(to bottom, #0f172a, #020617);
   padding: 80px 20px 40px 20px;
-  color: #fff;
+  color: #94a3b8;
   position: relative;
   overflow: hidden;
   direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .main-footer .container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
 }
+
 .footer-section h4 {
-  font-size: 22px;
-  color: #6E11B0;
+  font-size: 20px;
+  color: #009089;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-section h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 0;
+  width: 40px;
+  height: 3px;
+  background: #009089;
+  border-radius: 2px;
+}
+
+.footer-section p {
+  color: #94a3b8;
+  font-size: 15px;
+  line-height: 1.8;
   margin-bottom: 15px;
 }
-.footer-section p,
-.footer-section ul li a {
-  color: #fff;
-  font-size: 14px;
-  line-height: 1.6;
-}
-.footer-section p {
-    font-weight: bold;
-    font-size: 18px;
-    padding: 5px 0;
-}
+
 .footer-section ul {
   list-style: none;
   padding: 0;
 }
+
 .footer-section ul li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
+
 .footer-section ul li a {
   text-decoration: none;
-  transition: color 0.3s ease;
-  font-weight: bold;
-  font-size: 16px;
-}
-.footer-section ul li a:hover {
-  color: #00cec9;
-}
-.social-icons a {
-  margin-left: 15px;
-  color: #6E11B0;
-  font-size: 24px;
+  color: #cbd5e1;
+  font-size: 15px;
   transition: all 0.3s ease;
+  display: inline-block;
 }
+
+.footer-section ul li a:hover {
+  color: #009089;
+  transform: translateX(-5px);
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  color: #cbd5e1;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
 .social-icons a:hover {
-  transform: scale(1.2) rotate(15deg);
-  color: #00cec9;
-  text-shadow: 0 0 10px #00cec9;
+  background: #009089;
+  color: #0f172a;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 144, 137, 0.3);
 }
+
 .fun-facts-btn {
-  background: none;
-  border: 2px solid #6E11B0;
-  color: #6E11B0;
-  padding: 10px 20px;
-  border-radius: 5px;
+  background: transparent;
+  border: 2px solid #009089;
+  color: #009089;
+  padding: 10px 25px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 600;
   transition: all 0.3s ease;
   margin-top: 20px;
+  display: inline-block;
 }
+
 .fun-facts-btn:hover {
-  background-color: #6E11B0;
-  color: white;
-  transform: scale(1.05);
+  background: #009089;
+  color: #0f172a;
+  box-shadow: 0 0 20px rgba(0, 144, 137, 0.4);
+  transform: translateY(-2px);
 }
-.fun-facts-panel {
-  display: none;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  position: fixed;
-  bottom: -300px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  transition: bottom 0.5s ease;
-}
-.fun-facts-panel.active {
-  display: block;
-  bottom: 20px;
-}
-.fun-facts-panel p {
-  margin: 0;
-  font-size: 14px;
-  text-align: center;
-}
+
 .copyright {
   text-align: center;
-  font-size: 16px;
-  color: #fff;
+  font-size: 14px;
+  color: #64748b;
   padding-top: 30px;
-  margin-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 /* Responsive */
 @media (max-width: 768px) {
   .main-footer .container {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 30px;
   }
-  .social-icons a {
-    margin: 0 10px;
+
+  .footer-section h4::after {
+    right: 50%;
+    transform: translateX(50%);
   }
-  .footer-section h4 {
-    font-size: 18px;
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-section ul li a:hover {
+    transform: translateX(0) scale(1.05);
   }
 }
 </style>
