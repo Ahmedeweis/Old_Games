@@ -33,7 +33,7 @@
               <p class="text-gray-600 mb-6">يسعدنا تلقي دعمك ومساهمتك من خلال الرقم التالي:</p>
               <div
                 class="bg-gray-100 p-4 rounded-lg font-bold text-2xl text-center mb-6 tracking-wider flex items-center justify-center gap-3">
-                <span>{{ payment.vodafone.number }}</span>
+                <span class="text-black">{{ payment.vodafone.number }}</span>
                 <button @click="copyToClipboard(payment.vodafone.number)"
                   class="text-gray-500 hover:text-black cursor-pointer p-1" title="نسخ">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -65,7 +65,7 @@
               <p class="text-gray-600 mb-6">يسعدنا تلقي دعمك ومساهمتك من خلال الحساب التالي:</p>
               <div
                 class="bg-gray-100 p-4 rounded-lg font-bold text-xl text-center mb-6 flex items-center justify-center gap-3">
-                <span>{{ payment.instapay.username }}</span>
+                <span class="text-black">{{ payment.instapay.username }}</span>
                 <button @click="copyToClipboard(payment.instapay.username)"
                   class="text-gray-500 hover:text-black cursor-pointer p-1" title="نسخ">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"

@@ -83,7 +83,7 @@
   </div>
 </div>
         <Search @search="handleSearch" @category-change="handleCategoryFilter" :search-term="searchQuery" />
-        <div class="flex justify-center mb-6 flex-wrap gap-1 mt-[10px] items-center">
+        <div class="hidden md:flex justify-center mb-6 flex-wrap gap-1 mt-[10px] items-center">
           <!-- زر إلغاء الفلترة -->
           <button
             v-if="isAnyFilterActive"

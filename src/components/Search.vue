@@ -1,16 +1,16 @@
 <template>
-  <div class="flex flex-col md:flex-row justify-center w-full bg-black items-center p-4 rounded-lg shadow-md gap-2">
-    <div class="flex flex-col md:flex-row items-center w-full max-w-2xl mx-auto gap-0.5">
+  <div class="flex flex-col md:flex-row justify-center w-full bg-black items-center p-4 rounded-xl shadow-2xl gap-3">
+    <div class="flex flex-col md:flex-row items-center w-full max-w-2xl mx-auto gap-2 md:gap-0">
       <!-- القائمة المنسدلة -->
-      <div class="relative w-full md:w-[120px]">
-<select
-  v-model="selectedCategory"
-  class="appearance-none bg-gray-800 px-4 py-2 text-white rounded-lg md:rounded-l-lg md:rounded-r-none w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
->
-  <option disabled selected>النوع</option>
-  <option v-for="cat in categories" :key="cat">{{ cat }}</option>
-</select>
-        <div class="pointer-events-none absolute inset-y-0 right-2 flex items-center text-white">
+      <div class="relative w-full md:w-[140px]">
+        <select
+          v-model="selectedCategory"
+          class="appearance-none bg-gray-800 px-4 py-3 md:py-2 text-white rounded-lg md:rounded-l-lg md:rounded-r-none w-full focus:outline-none focus:ring-2 focus:ring-blue-500 border-none"
+        >
+          <option disabled selected>النوع</option>
+          <option v-for="cat in categories" :key="cat">{{ cat }}</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-white">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
@@ -23,19 +23,20 @@
           placeholder="أكتب اسم اللعبة"
           v-model="searchTerm"
           @input="openModal = true"
-          class="bg-gray-800 text-white placeholder-white text-right placeholder:text-right py-2 px-3 rounded-lg md:rounded-r-lg md:rounded-l-none w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="bg-gray-800 text-white placeholder-gray-400 text-right py-3 md:py-2 px-4 rounded-lg md:rounded-none w-full focus:outline-none focus:ring-2 focus:ring-blue-500 border-none"
         />
-        <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-white pointer-events-none">
+        <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z" />
           </svg>
         </div>
       </div>
       <!-- زر البحث -->
-      <button @click="openModal = true" class="text-white cursor-pointer bg-gray-800 px-4 py-2 rounded-lg hover:bg-white transition duration-300 hover:text-gray-800 w-full md:w-auto ml-2">
+      <button @click="openModal = true" class="text-white font-bold cursor-pointer bg-blue-600 md:bg-gray-800 px-6 py-3 md:py-2 rounded-lg md:rounded-r-lg md:rounded-l-none hover:bg-blue-500 md:hover:bg-white transition duration-300 md:hover:text-gray-800 w-full md:w-auto">
         بحث
       </button>
     </div>
+
     <!-- Modal -->
     <div v-if="openModal" class="fixed inset-0 bg-black/50 flex flex-col items-center z-50 ">
         <button @click="openModal = false" class="absolute top-2 left-3 text-3xl cursor-pointer text-gray-500 hover:text-gray-800 font-bold ">&times;</button>
