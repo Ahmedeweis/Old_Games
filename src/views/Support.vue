@@ -5,12 +5,14 @@
 
       <!-- Left Content (now Right since RTL) -->
       <div class="flex flex-col">
-        <h1 class="text-4xl font-bold text-[#1a202c] leading-tight mb-4">
+        <h1 class="text-2xl md:text-4xl font-bold text-[#1a202c] leading-tight mb-4 text-center md:text-right">
           ساهم في تطوير المنصة اكثر <br /> و تنمية المحتوى العربي
         </h1>
-        <p class="text-lg text-gray-600 mb-8 max-w-md">
+
+        <p class="text-base md:text-lg text-gray-600 mb-8 max-w-md mx-auto md:mx-0 text-center md:text-right">
           ساعدنا نكبر ونوفر العاب اكتر
         </p>
+
 
         <!-- Donation Form -->
         <div id="donation-form" class="w-full max-w-md">
