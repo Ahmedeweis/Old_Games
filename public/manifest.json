@@ -1,0 +1,21 @@
+{
+  "name": "Old Games",
+  "short_name": "Old Games",
+  "description": "استمتع بمجموعة من ألعاب الزمن الجميل، مصممة بواجهة أنيقة وسلسة باستخدام Vue و Tailwind.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6E11B0",
+  "icons": [
+    {
+      "src": "/Logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
